@@ -6,20 +6,35 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 13:50:25 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/16 17:38:07 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:56:07 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void	add_bonus
+
 void	create_malloc(const char str, int total, int *zero)
 {
 	int		i;
+	int		x;
 	char	*modif;
 
 	i = 0;
+	x = 0;
+	while (str[i] != '%')
+		i++;
+	i++;
 	modif = malloc(total * sizeof(char));
-	if (modif[i] == '+')
+	while (x <= total - 1)
+	{
+		if (zero == 1)
+			modif[x] = '0';
+		else
+			modif[x] = ' ';
+		x++;
+	}
+	modif[x] = '\0';
 }
 
 int	ft_padcalc(const char *str, int i)

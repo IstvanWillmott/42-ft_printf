@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:22:46 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/16 17:38:15 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:56:11 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_find(va_list args, const char type)
 	int	total_leng;
 
 	total_leng = 0;
-
 	if (format == 'c')
 		total_leng += ft_putchar(va_arg(args, int));
 	//else if (format 
