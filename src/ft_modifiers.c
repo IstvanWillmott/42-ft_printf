@@ -6,15 +6,13 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 13:50:25 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/16 18:56:07 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:53:58 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	add_bonus
-
-void	create_malloc(const char str, int total, int *zero)
+char	*create_malloc(const char *str, int total, int zero)
 {
 	int		i;
 	int		x;
@@ -24,7 +22,6 @@ void	create_malloc(const char str, int total, int *zero)
 	x = 0;
 	while (str[i] != '%')
 		i++;
-	i++;
 	modif = malloc(total * sizeof(char));
 	while (x <= total - 1)
 	{
@@ -35,6 +32,7 @@ void	create_malloc(const char str, int total, int *zero)
 		x++;
 	}
 	modif[x] = '\0';
+	return (modif);
 }
 
 int	ft_padcalc(const char *str, int i)
@@ -62,7 +60,7 @@ int	ft_padcalc(const char *str, int i)
 
 char	*ft_modifiers(const char *str, int i)
 {
-	int		*zero;
+	int		zero;
 	int		total;
 	char	*modif;
 
@@ -70,12 +68,9 @@ char	*ft_modifiers(const char *str, int i)
 	total = 0;
 	if ((total == 0) && (zero == 0))
 		if (str[i] == '0')
-			zero == 1;
+			zero = 1;
 	if ((str[i] >= '0') && (str[i] <= '9'))
 		total += ft_padcalc(str, i);
-	else if ((str[i] == '+') || (str[i] == '#') || (str[i] == '-')
-		|| (str[i] == ' ') || (str[i] == '%'))
-		total++;
-	modif = create_malloc(str, total, zero); 
+	modif = (char *) create_malloc(str, total, zero); 
 	return(modif);
 }

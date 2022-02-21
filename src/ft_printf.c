@@ -6,11 +6,11 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:22:46 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/16 18:56:11 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:53:55 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	ft_putchar(int c)
 {
@@ -18,14 +18,22 @@ int	ft_putchar(int c)
 	return (1);
 }
 
-int	ft_find(va_list args, const char type)
+int	ft_find(va_list args, const char format, char *bonus)
 {
-	int	total_leng;
+	int		total_leng;
+	char	*bon;
 
+	bon = bonus;
 	total_leng = 0;
 	if (format == 'c')
 		total_leng += ft_putchar(va_arg(args, int));
-	//else if (format 
+	else if ((format == 'i') || (format == 'd'))
+	{
+		ft_putstr(bon);
+		total_leng += ft_putnum(va_arg(args, int));
+	}
+	else if (format == 's')
+		total_leng += ft_putstr(va_arg(args, char *));
 	return (total_leng);
 }
 
@@ -44,7 +52,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			bonus = ft_modifiers(str, i + 1);
-			print_length += ft_find(args, str[i + 1]);
+			total_leng += ft_find(args, str[i + 1], bonus);
 			i++;
 		}
 		else
