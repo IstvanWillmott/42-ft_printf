@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 13:50:25 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/21 16:53:58 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:53:23 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char	*create_malloc(const char *str, int total, int zero)
 	x = 0;
 	while (str[i] != '%')
 		i++;
-	modif = malloc(total * sizeof(char));
-	while (x <= total - 1)
+	modif = (char *) malloc(total * sizeof(char));
+	while (x + 1 < total)
 	{
 		if (zero == 1)
 			modif[x] = '0';
@@ -40,8 +40,6 @@ int	ft_padcalc(const char *str, int i)
 	int	num;
 
 	num = 0;
-	while (str[i] == '0')
-		i++;
 	if ((str[i] >= '1') && (str[i] <= '9'))
 	{
 		num = str[i] - 48;
@@ -65,12 +63,13 @@ char	*ft_modifiers(const char *str, int i)
 	char	*modif;
 
 	zero = 0;
-	total = 0;
-	if ((total == 0) && (zero == 0))
-		if (str[i] == '0')
-			zero = 1;
-	if ((str[i] >= '0') && (str[i] <= '9'))
+	total = 0;	
+	if (str[i] == '0')
+		zero = 1;
+	while (str[i] == '0')
+		i++;
+	if ((str[i] >= '1') && (str[i] <= '9'))
 		total += ft_padcalc(str, i);
-	modif = (char *) create_malloc(str, total, zero); 
+	modif = create_malloc(str, total + 1, zero); 
 	return(modif);
 }

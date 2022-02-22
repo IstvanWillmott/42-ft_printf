@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:22:46 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/21 16:53:55 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:53:21 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			bonus = ft_modifiers(str, i + 1);
-			total_leng += ft_find(args, str[i + 1], bonus);
 			i++;
+			bonus = ft_modifiers(str, i);
+			while ((str[i] >= '0') && (str[i] <= '9'))
+				i++;
+			total_leng += ft_find(args, str[i], bonus);
 		}
 		else
 			total_leng += ft_putchar(str[i]);
@@ -61,4 +63,20 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(args);
 	return (total_leng);
+}
+
+#include <stdio.h>
+
+int main()
+{
+	char	c;
+	int		d;
+	char	*s;
+
+	c = 'c';
+	d = 10;
+	s = "nice";
+	ft_printf("uhhhh %04d\n", d);
+	printf("uhhhh %04d\n", d);
+	return (0);
 }
