@@ -75,6 +75,7 @@ int main()
 {
 	char	c;
 	int		d;
+	int		d2;
 	char	*s;
 
 	int myint;
@@ -82,15 +83,16 @@ int main()
 
 	c = 'c';
 	d = 98129898;
+	d2 = 1238;
 	s = "nice";
 	//decimal
-	myint = ft_printf("uhhhh %23d\n", d);
-	thint = printf("uhhhh %23d\n", d);
+	myint = ft_printf("uhhhh %023d %d\n", d, d2);
+	thint = printf("uhhhh %023d %d\n", d, d2);
 	printf("me: %d - printf: %d\n", myint, thint);
 	
 	//hex
-	myint = ft_printf("uhhhh %X\n", d);
-	thint = printf("uhhhh %X\n", d);
+	myint = ft_printf("uhhhh %X %x\n", d, d2);
+	thint = printf("uhhhh %X %x\n", d, d2);
 	printf("me: %d - printf: %d\n", myint, thint);
 	return (0);
 }
