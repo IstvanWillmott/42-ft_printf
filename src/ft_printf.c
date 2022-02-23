@@ -29,11 +29,13 @@ int	ft_find(va_list args, const char format, char *bonus)
 		total_leng += ft_putchar(va_arg(args, int));
 	else if ((format == 'i') || (format == 'd'))
 	{
-		ft_putstr(bon);
+		total_leng += ft_putstr(bon);
 		total_leng += ft_putnum(va_arg(args, int));
 	}
 	else if (format == 's')
 		total_leng += ft_putstr(va_arg(args, char *));
+	else if ((format == 'x') || (format == 'X'))
+		total_leng += ft_hexadecimal(va_arg(args, int), format);
 	return (total_leng);
 }
 
@@ -61,10 +63,12 @@ int	ft_printf(const char *str, ...)
 			total_leng += ft_putchar(str[i]);
 		i++;
 	}
+	free(bonus);
 	va_end(args);
 	return (total_leng);
 }
 
+//Testing
 #include <stdio.h>
 
 int main()
@@ -73,10 +77,20 @@ int main()
 	int		d;
 	char	*s;
 
+	int myint;
+	int thint;
+
 	c = 'c';
-	d = 10;
+	d = 98129898;
 	s = "nice";
-	ft_printf("uhhhh %04d\n", d);
-	printf("uhhhh %04d\n", d);
+	//decimal
+	myint = ft_printf("uhhhh %23d\n", d);
+	thint = printf("uhhhh %23d\n", d);
+	printf("me: %d - printf: %d\n", myint, thint);
+	
+	//hex
+	myint = ft_printf("uhhhh %X\n", d);
+	thint = printf("uhhhh %X\n", d);
+	printf("me: %d - printf: %d\n", myint, thint);
 	return (0);
 }

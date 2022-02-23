@@ -20,6 +20,7 @@
 int		ft_printf(const char *str, ...);
 int		ft_putstr(char *str);
 int		ft_putnum(int str);
+int		ft_hexadecimal(int num, char format);
 
 char	*ft_modifiers(const char *str, int i);
 char	*ft_itoa(int n);

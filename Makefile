@@ -16,7 +16,8 @@ SRCS = src/ft_printf.c \
 	   src/ft_modifiers.c \
 	   src/ft_putstr.c \
 	   src/ft_putnum.c \
-	   src/ft_itoa.c 
+	   src/ft_itoa.c \
+	   src/ft_hexadecimal.c  
 
 CC = gcc
 
