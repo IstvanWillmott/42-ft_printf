@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:22:46 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/22 18:53:21 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/24 17:48:38 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,13 @@ int	ft_find(va_list args, const char format, char *bonus)
 	if (format == 'c')
 		total_leng += ft_putchar(va_arg(args, int));
 	else if ((format == 'i') || (format == 'd'))
-	{
-		total_leng += ft_putstr(bon);
-		total_leng += ft_putnum(va_arg(args, int));
-	}
+		total_leng += ft_putnum(va_arg(args, int), bon);
 	else if (format == 's')
 		total_leng += ft_putstr(va_arg(args, char *));
 	else if ((format == 'x') || (format == 'X'))
 		total_leng += ft_hexadecimal(va_arg(args, int), format);
+	else if (format == '%')
+		total_leng += ft_putchar('%');
 	return (total_leng);
 }
 
@@ -58,16 +57,16 @@ int	ft_printf(const char *str, ...)
 			while ((str[i] >= '0') && (str[i] <= '9'))
 				i++;
 			total_leng += ft_find(args, str[i], bonus);
+			free(bonus);
 		}
 		else
 			total_leng += ft_putchar(str[i]);
 		i++;
 	}
-	free(bonus);
 	va_end(args);
 	return (total_leng);
 }
-
+/*
 //Testing
 #include <stdio.h>
 
@@ -82,17 +81,45 @@ int main()
 	int thint;
 
 	c = 'c';
-	d = 98129898;
-	d2 = 1238;
+	d = 43893682;
+	d2 = 27349;
 	s = "nice";
+	
+	printf("\n");
+	//character
+	printf("--------CHARACTER c--------\n");
+	myint = ft_printf("uhhhh %c\n", c);
+	thint = printf("uhhhh %c\n", c);
+	printf("me: %d - printf: %d\n", myint, thint);
+
+	printf("\n");
+	//string
+	printf("--------STRING s--------\n");
+	myint = ft_printf("uhhhh %s\n", s);
+	thint = printf("uhhhh %s\n", s);
+	printf("me: %d - printf: %d\n", myint, thint);
+
+	printf("\n");
 	//decimal
-	myint = ft_printf("uhhhh %023d %d\n", d, d2);
-	thint = printf("uhhhh %023d %d\n", d, d2);
+	printf("--------DECIMAL d & i--------\n");
+	myint = ft_printf("uhhhh %23d %13d\n", d, d2);
+	thint = printf("uhhhh %23d %13d\n", d, d2);
 	printf("me: %d - printf: %d\n", myint, thint);
 	
+	printf("\n");
 	//hex
+	printf("--------HEXADECIMAL X & x--------\n");
 	myint = ft_printf("uhhhh %X %x\n", d, d2);
 	thint = printf("uhhhh %X %x\n", d, d2);
 	printf("me: %d - printf: %d\n", myint, thint);
+
+	printf("\n");
+	//percent
+	printf("--------PERCENT %%--------\n");
+	myint = ft_printf("uhhhh %%\n");
+	thint = printf("uhhhh %%\n");
+	printf("me: %d - printf: %d\n", myint, thint);
+
+	printf("\n");
 	return (0);
-}
+}*/

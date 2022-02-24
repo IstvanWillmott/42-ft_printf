@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 13:50:25 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/22 18:53:23 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/24 15:25:32 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ char	*ft_modifiers(const char *str, int i)
 	char	*modif;
 
 	zero = 0;
-	total = 0;	
+	total = 0;
 	if (str[i] == '0')
 		zero = 1;
 	while (str[i] == '0')
 		i++;
 	if ((str[i] >= '1') && (str[i] <= '9'))
 		total += ft_padcalc(str, i);
-	modif = create_malloc(str, total + 1, zero); 
-	return(modif);
+	modif = create_malloc(str, total + 1, zero);
+	return (modif);
 }

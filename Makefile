@@ -6,18 +6,18 @@
 #    By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 13:08:54 by iwillmot          #+#    #+#              #
-#    Updated: 2022/02/22 14:22:38 by iwillmot         ###   ########.fr        #
+#    Updated: 2022/02/24 17:48:58 by iwillmot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf.a
+NAME = libftprintf.a
 
 SRCS = src/ft_printf.c \
 	   src/ft_modifiers.c \
 	   src/ft_putstr.c \
 	   src/ft_putnum.c \
 	   src/ft_itoa.c \
-	   src/ft_hexadecimal.c  
+	   src/ft_hexadecimal.c
 
 CC = gcc
 
@@ -25,7 +25,7 @@ FLAGS = -Wall -Wextra -Werror
 
 OBJS = $(SRCS:.c=.o)
 
-INCLUDES = -I./includes
+INCLUDES = -I./includes/
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(INCLUDES) $(SRCS)
@@ -34,7 +34,7 @@ $(NAME): $(OBJS)
 all : $(NAME)
 
 clean :
-	rm -rf $(SURPL_O) 
+	rm -rf $(SURPL_O)
 	rm -rf $(OBJS)
 
 fclean : clean

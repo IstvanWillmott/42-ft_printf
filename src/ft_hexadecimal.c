@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_hexadecimal.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/24 14:18:52 by iwillmot          #+#    #+#             */
+/*   Updated: 2022/02/24 15:24:03 by iwillmot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_printf.h"
 
 int	ft_divcalc(int num)
 {
 	int	res;
-	int	times;
 
 	res = 16;
 	while (res * 16 < num)
@@ -24,10 +35,10 @@ int	ft_numcalc(int num)
 	return (numlen + 1);
 }
 
-int ft_assigncor(char *new, char format)
+int	ft_assigncor(char *new, char format)
 {
-	int numlen;
-	int x;
+	int	numlen;
+	int	x;
 
 	numlen = 0;
 	x = 0;
@@ -46,13 +57,13 @@ int ft_assigncor(char *new, char format)
 	return (numlen);
 }
 
-int ft_hexadecimal(int num, char format)
+int	ft_hexadecimal(int num, char format)
 {
 	int		x;
 	int		divider;
 	int		numlen;
 	char	*new;
-	
+
 	x = 0;
 	divider = ft_divcalc(num);
 	numlen = ft_numcalc(num);
