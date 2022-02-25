@@ -5,81 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 14:18:52 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/24 15:24:03 by iwillmot         ###   ########.fr       */
+/*   Created: 2022/02/25 14:21:24 by iwillmot          #+#    #+#             */
+/*   Updated: 2022/02/25 18:57:42 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_divcalc(int num)
+int ft_putchar_hex(int c)
 {
-	int	res;
-
-	res = 16;
-	while (res * 16 < num)
-		res *= 16;
-	return (res);
+	write(1, &c, 1);
+	return (1);
 }
 
-int	ft_numcalc(int num)
-{
-	int		numlen;
-
-	numlen = 0;
-	while (num > 9)
+int ft_write_hex(int num, char format, int i)
+{	
+	if (num >= 16)
 	{
-		num = num / 10;
-		numlen++;
+		ft_write_hex(num / 16, format, i);
+		ft_write_hex(num % 16, format, i);
 	}
-	return (numlen + 1);
-}
-
-int	ft_assigncor(char *new, char format)
-{
-	int	numlen;
-	int	x;
-
-	numlen = 0;
-	x = 0;
-	while (new[x])
+	else
 	{
-		if (new[x] > '9')
+		if (num <= 9)
+			i += ft_putchar_hex(num + '0');
+		else
 		{
 			if (format == 'x')
-				new[x] += 39;
-			else
-				new[x] += 7;
+				i += ft_putchar_hex(num - 10 + 'a');
+			if (format == 'X')
+				i += ft_putchar_hex(num - 10 + 'A');
 		}
-		x++;
-		numlen++;
 	}
-	return (numlen);
+	return (i);
 }
 
 int	ft_hexadecimal(int num, char format)
 {
-	int		x;
-	int		divider;
-	int		numlen;
-	char	*new;
+	int	i;
 
-	x = 0;
-	divider = ft_divcalc(num);
-	numlen = ft_numcalc(num);
-	new = (char *) malloc(numlen);
-	while (num > 16)
-	{
-		new[x] = (num / divider) + 48;
-		num = num - (divider * (new[x] - 48));
-		divider = ft_divcalc(num);
-		x++;
-	}
-	new[x] = (num % 16) + 48;
-	while (x++ < numlen - 1)
-		new[x] = '\0';
-	numlen = ft_assigncor(new, format);
-	ft_putstr(new);
-	free(new);
-	return (numlen);
+	i = 0;
+	if (num == 0)
+		return (write(1, "0", 1));
+	else
+		i += ft_write_hex(num, format, i);
+	return (i);
 }

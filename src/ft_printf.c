@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:22:46 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/24 17:48:38 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/25 14:49:40 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (total_leng);
 }
-/*
+
 //Testing
 #include <stdio.h>
 
@@ -82,7 +82,7 @@ int main()
 
 	c = 'c';
 	d = 43893682;
-	d2 = 27349;
+	d2 = 2831;
 	s = "nice";
 	
 	printf("\n");
@@ -98,6 +98,13 @@ int main()
 	myint = ft_printf("uhhhh %s\n", s);
 	thint = printf("uhhhh %s\n", s);
 	printf("me: %d - printf: %d\n", myint, thint);
+	
+	printf("\n");
+	//void ptr
+	printf("--------VOID PTR p--------\n");
+	//myint = ft_printf("uhhhh %s\n", s);
+	thint = printf("uhhhh %p\n", s);
+	//printf("me: %d - printf: %d\n", myint, thint);
 
 	printf("\n");
 	//decimal
@@ -122,4 +129,4 @@ int main()
 
 	printf("\n");
 	return (0);
-}*/
+}
