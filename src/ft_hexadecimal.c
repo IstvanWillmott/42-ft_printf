@@ -6,19 +6,19 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 14:21:24 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/25 18:57:42 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/28 14:47:25 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int ft_putchar_hex(int c)
+void	ft_putchar_hex(int c, char *i)
 {
 	write(1, &c, 1);
-	return (1);
+	i[0]++;
 }
 
-int ft_write_hex(int num, char format, int i)
+void	ft_write_hex(int num, char format, char *i)
 {	
 	if (num >= 16)
 	{
@@ -28,26 +28,28 @@ int ft_write_hex(int num, char format, int i)
 	else
 	{
 		if (num <= 9)
-			i += ft_putchar_hex(num + '0');
+			ft_putchar_hex(num + '0', i);
 		else
 		{
 			if (format == 'x')
-				i += ft_putchar_hex(num - 10 + 'a');
+				ft_putchar_hex(num - 10 + 'a', i);
 			if (format == 'X')
-				i += ft_putchar_hex(num - 10 + 'A');
+				ft_putchar_hex(num - 10 + 'A', i);
 		}
 	}
-	return (i);
 }
 
 int	ft_hexadecimal(int num, char format)
 {
-	int	i;
+	char	*i;
+	int		g;
 
-	i = 0;
+	i = malloc(1);
+	i[0] = 0;
 	if (num == 0)
 		return (write(1, "0", 1));
 	else
-		i += ft_write_hex(num, format, i);
-	return (i);
+		ft_write_hex(num, format, i);
+	g = i[0];
+	return (g);
 }

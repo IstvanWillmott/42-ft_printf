@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:22:46 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/25 14:49:40 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/28 18:11:54 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	ft_find(va_list args, const char format, char *bonus)
 		total_leng += ft_putstr(va_arg(args, char *));
 	else if ((format == 'x') || (format == 'X'))
 		total_leng += ft_hexadecimal(va_arg(args, int), format);
+	else if (format == 'u')
+		total_leng += ft_putnum_unsigned(va_arg(args, int), bon);
 	else if (format == '%')
 		total_leng += ft_putchar('%');
 	return (total_leng);
@@ -109,8 +111,15 @@ int main()
 	printf("\n");
 	//decimal
 	printf("--------DECIMAL d & i--------\n");
-	myint = ft_printf("uhhhh %23d %13d\n", d, d2);
-	thint = printf("uhhhh %23d %13d\n", d, d2);
+	myint = ft_printf("uhhhh %023d %13d\n", d, d2);
+	thint = printf("uhhhh %023d %13d\n", d, d2);
+	printf("me: %d - printf: %d\n", myint, thint);
+	
+	printf("\n");
+	//unsigned int
+	printf("--------UNSIGNED INT u--------\n");
+	myint = ft_printf("uhhhh %23u %u\n", d, d2);
+	thint = printf("uhhhh %23u %u\n", d, d2);
 	printf("me: %d - printf: %d\n", myint, thint);
 	
 	printf("\n");

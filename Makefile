@@ -6,7 +6,7 @@
 #    By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 13:08:54 by iwillmot          #+#    #+#              #
-#    Updated: 2022/02/24 17:48:58 by iwillmot         ###   ########.fr        #
+#    Updated: 2022/02/28 16:20:18 by iwillmot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ SRCS = src/ft_printf.c \
 	   src/ft_putstr.c \
 	   src/ft_putnum.c \
 	   src/ft_itoa.c \
-	   src/ft_hexadecimal.c
+	   src/ft_hexadecimal.c \
+	   src/ft_putnum_unsigned \
+	   src/ft_putptr
 
 CC = gcc
 

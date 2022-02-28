@@ -6,13 +6,13 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 14:01:52 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/25 14:14:15 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/02/28 18:11:58 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-/*
-int	ft_print_ptr(unsigned long long ptr)
+
+int	ft_putptr(unsigned long long ptr)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	ft_print_ptr(unsigned long long ptr)
 		i += write(1, "0", 1);
 	else
 	{
-		
+		 
 	}
 	return (i);
-}*/
+}
