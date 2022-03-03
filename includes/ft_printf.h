@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:07:23 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/28 18:11:52 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/03/03 14:08:01 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_putstr(char *str);
 int		ft_putnum(int str, char *bon);
 int		ft_hexadecimal(int num, char format);
 int		ft_putnum_unsigned(unsigned int num, char *bonus);
-int		ft_putptr(unsigned long long ptr)
+int		ft_putptr(unsigned long long ptr);
 
 char	*ft_modifiers(const char *str, int i);
 char	*ft_itoa(int n);

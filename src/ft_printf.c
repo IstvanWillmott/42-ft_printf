@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:22:46 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/02/28 18:11:54 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/03/03 14:07:52 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	ft_find(va_list args, const char format, char *bonus)
 		total_leng += ft_putnum(va_arg(args, int), bon);
 	else if (format == 's')
 		total_leng += ft_putstr(va_arg(args, char *));
+	else if (format == 'p')
+		total_leng += ft_putptr(va_arg(args, unsigned long long));
 	else if ((format == 'x') || (format == 'X'))
 		total_leng += ft_hexadecimal(va_arg(args, int), format);
 	else if (format == 'u')
@@ -68,7 +70,7 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (total_leng);
 }
-
+/*
 //Testing
 #include <stdio.h>
 
@@ -104,9 +106,9 @@ int main()
 	printf("\n");
 	//void ptr
 	printf("--------VOID PTR p--------\n");
-	//myint = ft_printf("uhhhh %s\n", s);
+	myint = ft_printf("uhhhh %p\n", s);
 	thint = printf("uhhhh %p\n", s);
-	//printf("me: %d - printf: %d\n", myint, thint);
+	printf("me: %d - printf: %d\n", myint, thint);
 
 	printf("\n");
 	//decimal
@@ -138,4 +140,4 @@ int main()
 
 	printf("\n");
 	return (0);
-}
+}*/
