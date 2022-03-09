@@ -1,3 +1,3 @@
 # ft_printf
 My implementation of ft_printf from 42 Adelaide
-Unfinished
+Finished - Only Mandatory
