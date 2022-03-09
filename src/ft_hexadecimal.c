@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 14:21:24 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/03/04 13:26:37 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/03/09 13:37:06 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putchar_hex(int c, char *i)
 	i[0]++;
 }
 
-void	ft_write_hex(int num, char format, char *i)
+void	ft_write_hex(unsigned int num, char format, char *i)
 {	
 	if (num >= 16)
 	{
@@ -39,7 +39,7 @@ void	ft_write_hex(int num, char format, char *i)
 	}
 }
 
-int	ft_hexadecimal(int num, char format)
+int	ft_hexadecimal(unsigned int num, char format)
 {
 	char	*i;
 	int		g;
@@ -47,9 +47,13 @@ int	ft_hexadecimal(int num, char format)
 	i = malloc(1);
 	i[0] = 0;
 	if (num == 0)
+	{
+		free (i);
 		return (write(1, "0", 1));
+	}
 	else
 		ft_write_hex(num, format, i);
 	g = i[0];
+	free (i);
 	return (g);
 }

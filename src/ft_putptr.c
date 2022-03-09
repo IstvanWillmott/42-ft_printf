@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 14:01:52 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/03/04 13:27:26 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/03/09 14:12:35 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int	ft_putptr(unsigned long long ptr)
 	else
 		ft_write_hex_ptr(ptr, i);
 	g = i[0];
+	free (i);
 	return (g);
 }

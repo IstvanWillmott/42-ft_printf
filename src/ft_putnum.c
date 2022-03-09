@@ -6,7 +6,7 @@
 /*   By: iwillmot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 15:11:54 by iwillmot          #+#    #+#             */
-/*   Updated: 2022/03/04 13:27:08 by iwillmot         ###   ########.fr       */
+/*   Updated: 2022/03/09 13:40:11 by iwillmot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,16 @@ int	ft_countstr(char *string)
 	return (i - 1);
 }
 
-int	ft_putnum(int str, char *bon)
+int	ft_putnum(int str)
 {
 	int		i;
 	char	*new;
 	int		newleng;
-	int		bonleng;
 
 	i = 0;
 	new = ft_itoa(str);
 	newleng = ft_countstr(new);
-	bonleng = ft_countstr(bon);
-	if (newleng <= bonleng)
-	{
-		while (newleng >= 0)
-		{
-			bon[bonleng] = new[newleng];
-			bonleng--;
-			newleng--;
-		}
-		i = ft_putstr(bon);
-	}
-	else
-		i = ft_putstr(new);
+	i = ft_putstr(new);
+	free(new);
 	return (i);
 }
